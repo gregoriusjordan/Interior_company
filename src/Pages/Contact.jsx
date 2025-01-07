@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 import bg from "../assets/bg.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import Footer from "../Components/Footer";
 
 const Contact = () => {
      useEffect(() => {
@@ -86,6 +86,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

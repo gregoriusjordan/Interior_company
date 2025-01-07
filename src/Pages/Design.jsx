@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar';
 import Card from '../Components/Card';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Footer from '../Components/Footer';
 
 
 const Design = () => {
@@ -82,6 +83,7 @@ const Design = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 };

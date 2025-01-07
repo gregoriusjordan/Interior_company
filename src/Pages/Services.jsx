@@ -3,6 +3,7 @@ import Navbar from "../Components/Navbar";
 import ServiceCard from "../Components/ServiceCard";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Footer from '../Components/Footer';
 
 const Services = () => {
      useEffect(() => {
@@ -59,6 +60,7 @@ const Services = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

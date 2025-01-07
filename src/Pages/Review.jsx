@@ -3,6 +3,7 @@ import Navbar from "../Components/Navbar";
 import Review from "../assets/review.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Footer from "../Components/Footer";
 
 const ReviewPage = () => {
      useEffect(() => {
@@ -122,6 +123,7 @@ const ReviewPage = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
