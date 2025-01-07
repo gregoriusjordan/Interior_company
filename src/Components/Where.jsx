@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import logo from "../assets/logo.png";
@@ -11,6 +11,34 @@ const Where = () => {
       easing: "ease-in-out",
       once: true,
     });
+  }, []);
+
+  const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const apiKey = "767d68675b744e28845174305241805"; 
+  const city = "Jakarta";
+  const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+
+  useEffect(() => {
+
+    const fetchWeather = async () => {
+      try {
+        const response = await fetch(weatherUrl);
+        if (!response.ok) {
+          throw new Error("Failed to fetch weather data");
+        }
+        const data = await response.json();
+        setWeather(data);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
+    };
+
+    fetchWeather();
   }, []);
 
   return (
@@ -53,6 +81,20 @@ const Where = () => {
           <h2 className="text-center md:text-left text-[18px] md:text-[25px] text-coffee mt-4">
             Opens at 10 AM &nbsp; | &nbsp; Closes at 6 PM
           </h2>
+
+
+          {loading ? (
+            <p className="mt-4">Loading weather data...</p>
+          ) : error ? (
+            <p className="mt-4 text-red-600">Error: {error}</p>
+          ) : (
+            <div className="mt-6 text-left">
+              <h3 className="text-[20px] font-semibold">Current Weather</h3>
+              <p className="text-[16px] mt-2">Temperature: {weather.current.temp_c}°C</p>
+              <p className="text-[16px]">Weather: {weather.current.condition.text}</p>
+              <p className="text-[16px]">Humidity: {weather.current.humidity}%</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
